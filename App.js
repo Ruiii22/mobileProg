@@ -111,23 +111,23 @@ const styles = StyleSheet.create({
   },
   loginContainer: {
     width: "85%",
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
     borderRadius: 40,
-    padding: 40,
+    padding: 25,
     marginTop: 10,
     marginBottom: 110,
   },
   signInText: {
     alignSelf: "flex-start",
-    fontSize: 28,
+    fontSize: 40,
     fontWeight: "bold",
-    marginBottom: 10,
   },
   subText: {
     alignSelf: "flex-start",
     fontSize: 16,
     color: "#000000",
     marginBottom: 20,
+    paddingLeft: 3,
   },
   inputContainer: {
     width: "100%",
