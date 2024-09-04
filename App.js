@@ -84,7 +84,7 @@ export default function App() {
         </TouchableOpacity>
 
         {/* Create Account Hyperlink*/}
-        <Text style={styles.createAccount}>
+        <Text style={styles.createText}>
           Don't have an account? <Text style={styles.createLink}>Create</Text>
         </Text>
       </BlurView>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },
   forgotPassword: {
     alignSelf: "flex-end",
-    color: "#007BFF",
+    color: "#1F5676",
   },
   loginButton: {
     width: "70%",
@@ -172,12 +172,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  createAccount: {
+  createText: {
     marginTop: 20,
     color: "#666",
   },
   createLink: {
-    color: "#007BFF",
+    color: "#1F5676",
     fontWeight: "bold",
   },
 });
