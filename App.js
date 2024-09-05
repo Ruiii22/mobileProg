@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,16 +13,37 @@ import { StatusBar } from "expo-status-bar";
 import Ionicons from "react-native-vector-icons/Ionicons"; // Package import for our icons
 
 export default function App() {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [isPasswordVisible, setPasswordVisible] = useState(false); // State to manage password visibility
+
+  // Function to toggle password visibility
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!isPasswordVisible);
+  };
+
+  // Function to handle login button press
+  const handleLoginPress = () => {
+    console.log("Login button pressed");
+  };
+
+  // Function to handle create button press
+  const handleCreatePress = () => {
+    console.log("Create button pressed");
+  };
+
+  // Function to handle forgot password press
+  const handleForgotPasswordPress = () => {
+    console.log("Forgot Password pressed");
+  };
+
   return (
     <ImageBackground
-      source={require("./assets/loginBG.jpg")} //Background image file path
+      source={require("./assets/loginBG.jpg")} // Background image file path
       style={styles.background}
     >
-      <BlurView intensity={140} style={styles.blurContainer}>
+      <BlurView intensity={150} style={styles.blurContainer}>
         {/* Logo Image */}
         <Image
-          source={require("./assets/logo.png")} //Logo file path
+          source={require("./assets/logo.png")} // Logo file path
           style={styles.logo}
           resizeMode="contain"
         />
@@ -37,7 +58,7 @@ export default function App() {
               <Ionicons
                 name="mail-outline"
                 size={20}
-                color="#666"
+                color="#1F5676"
                 style={styles.inputIcon}
               />
               <TextInput
@@ -52,18 +73,18 @@ export default function App() {
               <Ionicons
                 name="lock-closed-outline"
                 size={20}
-                color="#666"
+                color="#1F5676"
                 style={styles.inputIcon}
               />
               <TextInput
                 style={styles.input}
                 placeholder="Password"
                 placeholderTextColor="#666"
-                secureTextEntry={true}
+                secureTextEntry={!isPasswordVisible} // Toggle password visibility
               />
-              <TouchableOpacity>
+              <TouchableOpacity onPress={togglePasswordVisibility}>
                 <Ionicons
-                  name="eye-off-outline"
+                  name={isPasswordVisible ? "eye-outline" : "eye-off-outline"} // Change icon
                   size={20}
                   color="#666"
                   style={styles.inputIconRight}
@@ -72,21 +93,25 @@ export default function App() {
             </View>
             <View style={styles.underline} />
 
-            <TouchableOpacity>
+            {/* Forgot Password TouchableOpacity with onPress */}
+            <TouchableOpacity onPress={handleForgotPasswordPress}>
               <Text style={styles.forgotPassword}>Forgot Password?</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/*Login Button*/}
-        <TouchableOpacity style={styles.loginButton}>
+        {/* Login Button with onPress functionality */}
+        <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
 
-        {/* Create Account Hyperlink*/}
-        <Text style={styles.createText}>
-          Don't have an account? <Text style={styles.createLink}>Create</Text>
-        </Text>
+        {/* Create Account Text and Button */}
+        <View style={styles.createAccountContainer}>
+          <Text style={styles.createText}>Don't have any account?</Text>
+          <TouchableOpacity onPress={handleCreatePress}>
+            <Text style={styles.createLink}>Create</Text>
+          </TouchableOpacity>
+        </View>
       </BlurView>
       <StatusBar style="light" />
     </ImageBackground>
@@ -112,10 +137,10 @@ const styles = StyleSheet.create({
   loginContainer: {
     width: "85%",
     backgroundColor: "rgba(255, 255, 255, 0.7)",
-    borderRadius: 40,
+    borderRadius: 30,
     padding: 25,
     marginTop: 10,
-    marginBottom: 110,
+    marginBottom: 100,
   },
   signInText: {
     alignSelf: "flex-start",
@@ -126,7 +151,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontSize: 16,
     color: "#000000",
-    marginBottom: 20,
+    marginBottom: 45,
     paddingLeft: 3,
   },
   inputContainer: {
@@ -144,8 +169,8 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   underline: {
-    height: 1,
-    backgroundColor: "#000",
+    height: 1.5,
+    backgroundColor: "#000000",
     marginBottom: 15,
   },
   inputIcon: {
@@ -156,6 +181,7 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   forgotPassword: {
+    fontWeight: 'bold',
     alignSelf: "flex-end",
     color: "#1F5676",
   },
@@ -172,9 +198,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  createAccountContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 15,
+  },
   createText: {
-    marginTop: 20,
-    color: "#666",
+    color: "#000000",
+    marginRight: 5,
   },
   createLink: {
     color: "#1F5676",
