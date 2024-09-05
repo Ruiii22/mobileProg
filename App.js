@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react";//UI Library sa react
 import {
   StyleSheet,
   Text,
@@ -7,30 +7,30 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
-} from "react-native";
-import { BlurView } from "expo-blur"; // Package import to blur image background
-import { StatusBar } from "expo-status-bar";
+} from "react-native";// mga react native compenents sa Stylesheet, Text, view, textinput, touchableOpacity, imagebackground, ug image
+import { BlurView } from "expo-blur"; // package para ma blur ang background
+import { StatusBar } from "expo-status-bar"; // package para sa status bar sa app
 import Ionicons from "react-native-vector-icons/Ionicons"; // Package import for our icons
 
 export default function App() {
-  const [isPasswordVisible, setPasswordVisible] = useState(false); // State to manage password visibility
+  const [isPasswordVisible, setPasswordVisible] = useState(false); // condition to manage password visibility
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible(!isPasswordVisible);
   };
 
-  // Function to handle login button press
+  // Function for login button
   const handleLoginPress = () => {
     console.log("Login button pressed");
   };
 
-  // Function to handle create button press
+  // Function for create button
   const handleCreatePress = () => {
     console.log("Create button pressed");
   };
 
-  // Function to handle forgot password press
+  // Function for forgot password
   const handleForgotPasswordPress = () => {
     console.log("Forgot Password pressed");
   };
@@ -40,6 +40,7 @@ export default function App() {
       source={require("./assets/loginBG.jpg")} // Background image file path
       style={styles.background}
     >
+      {/* Syntax para ma blur ang background */}
       <BlurView intensity={150} style={styles.blurContainer}>
         {/* Logo Image */}
         <Image
@@ -55,6 +56,7 @@ export default function App() {
           {/* Input fields */}
           <View style={styles.inputContainer}>
             <View style={styles.inputWrapper}>
+              {/* Icons sa input fields */}
               <Ionicons
                 name="mail-outline"
                 size={20}
@@ -62,12 +64,13 @@ export default function App() {
                 style={styles.inputIcon}
               />
               <TextInput
-                style={styles.input}
+                style={styles.placeholder}
                 placeholder="Email or Mobile Number"
                 placeholderTextColor="#666"
               />
             </View>
-            <View style={styles.underline} />
+             {/* Para chui ang input fields estitik bitaw */}
+            <View style={styles.underline}/>
 
             <View style={styles.inputWrapper}>
               <Ionicons
@@ -77,30 +80,31 @@ export default function App() {
                 style={styles.inputIcon}
               />
               <TextInput
-                style={styles.input}
+                style={styles.placeholder}
                 placeholder="Password"
                 placeholderTextColor="#666"
                 secureTextEntry={!isPasswordVisible} // Toggle password visibility
               />
-              <TouchableOpacity onPress={togglePasswordVisibility}>
+              {/* Mao dayun ning button para ma trigger tung makita ang password */}
+              <TouchableOpacity onPress={togglePasswordVisibility}> 
                 <Ionicons
                   name={isPasswordVisible ? "eye-outline" : "eye-off-outline"} // Change icon
                   size={20}
                   color="#666"
-                  style={styles.inputIconRight}
+                  style={styles.passwordShowButton}
                 />
               </TouchableOpacity>
             </View>
             <View style={styles.underline} />
 
-            {/* Forgot Password TouchableOpacity with onPress */}
+            {/* Shempre mao ning forgot password */}
             <TouchableOpacity onPress={handleForgotPasswordPress}>
               <Text style={styles.forgotPassword}>Forgot Password?</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Login Button with onPress functionality */}
+        {/* Mao dayun ning sa login button */}
         <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
@@ -119,22 +123,22 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  background: {
+  background: { // Mao ning rason nganong naa ang picture sa background
     flex: 1,
     resizeMode: "cover",
   },
-  blurContainer: {
+  blurContainer: { // Kani dayun sa background blur ba istetek
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
   },
-  logo: {
+  logo: { // Mao dayun ning sa Logo
     width: 220,
     height: 220,
     marginTop: 30,
   },
-  loginContainer: {
+  loginContainer: { // login container katong sudlanan sa mga input fields ug katong sa text
     width: "85%",
     backgroundColor: "rgba(255, 255, 255, 0.7)",
     borderRadius: 30,
@@ -142,50 +146,50 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 100,
   },
-  signInText: {
+  signInText: { // di.ara ohhh sign in text
     alignSelf: "flex-start",
     fontSize: 40,
     fontWeight: "bold",
   },
-  subText: {
+  subText: { // mao dayun ning gamay na text ubos sa sign in
     alignSelf: "flex-start",
     fontSize: 16,
     color: "#000000",
     marginBottom: 45,
     paddingLeft: 3,
   },
-  inputContainer: {
+  inputContainer: { // mao ning input fields
     width: "100%",
   },
-  inputWrapper: {
+  inputWrapper: { // input wrapper katong plastaranan sa mga icons ug input fields
     flexDirection: "row",
     alignItems: "center",
     marginBottom: -5,
   },
-  input: {
+  placeholder: { // mao ning placeholder
     flex: 1,
     height: 50,
-    paddingLeft: 15,
+    paddingLeft: 10,
     color: "#333",
   },
-  underline: {
+  underline: { // Ang estitik nga underline sa input fields
     height: 1.5,
     backgroundColor: "#000000",
     marginBottom: 15,
   },
-  inputIcon: {
+  inputIcon: { // mga Icons
     paddingLeft: 15,
     paddingRight: 10,
   },
-  inputIconRight: {
+  passwordShowButton: { // mao ning show password katong naa sa input fields
     paddingRight: 15,
   },
-  forgotPassword: {
+  forgotPassword: { // forgot password dayun nga hyperlink
     fontWeight: 'bold',
     alignSelf: "flex-end",
     color: "#1F5676",
   },
-  loginButton: {
+  loginButton: { // si login button
     width: "70%",
     height: 50,
     backgroundColor: "#1F5676",
@@ -193,21 +197,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  loginButtonText: {
+  loginButtonText: { // si login text
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
   },
-  createAccountContainer: {
+  createAccountContainer: { // mao ning container atong text sa ubos atong login button para ma align ang text ug create nga hyperlink
     flexDirection: "row",
     alignItems: "center",
     marginTop: 15,
   },
-  createText: {
+  createText: { // si text
     color: "#000000",
     marginRight: 5,
   },
-  createLink: {
+  createLink: { // ug si hyperlink
     color: "#1F5676",
     fontWeight: "bold",
   },
