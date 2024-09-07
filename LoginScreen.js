@@ -11,8 +11,8 @@ import {
 import { BlurView } from "expo-blur"; // package para ma blur ang background
 import { StatusBar } from "expo-status-bar"; // package para sa status bar
 import Ionicons from "react-native-vector-icons/Ionicons"; // Package import for our icons
-
 export default function LoginScreen({ navigation }) { // Pass navigation prop
+  
   const [isPasswordVisible, setPasswordVisible] = useState(false); // condition to manage password visibility
 
   // Function to toggle password visibility
